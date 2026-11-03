@@ -48,3 +48,4 @@ pip install requests beautifulsoup4 pandas openpyxl
 # Запуск сбора и генерации файлов
 python generate_perfect_database.py
 ```
+
