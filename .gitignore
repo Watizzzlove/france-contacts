@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.system_generated/
+test_*.py
+inspect_*.py
+check_*.py
+verify_*.py
+print_*.py
+add_*.py
+polish_*.py
+make_pages_*.py
+france_agricultural_contacts_100_with_glossary.xlsx

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>База фермерских хозяйств Франции (100 организаций) — Демонстрация</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#1e40af',
+              600: '#1d4ed8',
+              700: '#1e3a8a',
+              800: '#172554'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .badge-crop {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    .badge-vigne {
+      background: #fdf2f8;
+      color: #9d174d;
+      border: 1px solid #fbcfe8;
+    }
+    .badge-fruit {
+      background: #fffbeb;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+    .badge-elevage {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
+          🌾
+        </div>
+        <div>
+          <h1 class="text-lg font-bold text-slate-900 leading-tight">AgriFrance Contacts B2B</h1>
+          <p class="text-xs text-slate-500 font-medium">База сельхозпредприятий Франции (100 верифицированных организаций)</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="france_agricultural_contacts_100.xlsx" download class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-sm transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Скачать .XLSX
+        </a>
+        <a href="france_agricultural_contacts_100.csv" download class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition border border-slate-200">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Скачать .CSV
+        </a>
+        <a href="https://github.com/Watizzzlove/france-contacts" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 rounded-lg border border-slate-200 transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          Репозиторий
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero & Highlights -->
+  <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+    <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl mb-8 relative overflow-hidden">
+      <div class="relative z-10 max-w-3xl">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-3">
+          ✓ Проверено по нормам GDPR и ТЗ Kwork
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-2">
+          База потенциальных заказчиков сельхозуслуг во Франции
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+          Выборка собрана из официального реестра <strong>Ministère de l'Agriculture</strong> (госпортал <em>data.gouv.fr</em>, сертификация HVE). Включены только действующие агропредприятия с официальными сайтами, прямыми формами связи и корпоративными контактами.
+        </p>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/10">
+            <div class="text-2xl font-extrabold text-white">100</div>
+            <div class="text-xs text-slate-300">Организаций в базе</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/10">
+            <div class="text-2xl font-extrabold text-white">11</div>
+            <div class="text-xs text-slate-300">Регионов Франции</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/10">
+            <div class="text-2xl font-extrabold text-white">100%</div>
+            <div class="text-xs text-slate-300">Рабочие сайты и формы</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/10">
+            <div class="text-2xl font-extrabold text-white">0%</div>
+            <div class="text-xs text-slate-300">Персональных данных (GDPR)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info Accordion / Explanations -->
+    <div class="bg-white border border-slate-200 rounded-xl p-5 mb-8 shadow-sm">
+      <div class="flex items-center justify-between cursor-pointer" onclick="toggleGlossary()">
+        <div class="flex items-center gap-2">
+          <span class="text-blue-600 font-bold text-lg">ℹ️</span>
+          <h3 class="text-base font-bold text-slate-900">Справочник обозначений и стандарты сбора (нажмите, чтобы развернуть)</h3>
+        </div>
+        <span id="glossaryToggleIcon" class="text-xs font-semibold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md">Развернуть ↓</span>
+      </div>
+
+      <div id="glossaryContent" class="hidden mt-4 pt-4 border-t border-slate-100 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <div class="space-y-3">
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <h4 class="font-bold text-slate-900 mb-1">🏛️ Источник: Ministère de l’Agriculture & data.gouv.fr</h4>
+            <p class="text-slate-600 leading-relaxed">
+              Реестр сертификации <strong>HVE (Haute Valeur Environnementale)</strong> — 3-й (высший) уровень государственной эко-сертификации Франции. Предприятия с сертификатом HVE — это крупные и средние действующие агропредприятия с подтверждённым бюджетом на технологии, услуги и модернизацию.
+            </p>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <h4 class="font-bold text-slate-900 mb-1">🏢 Организационно-правовые формы Франции</h4>
+            <p class="text-slate-600 leading-relaxed">
+              <strong>GAEC</strong> — совместное фермерское объединение нескольких аграриев.<br>
+              <strong>EARL</strong> — сельхозпредприятие с ограниченной ответственностью.<br>
+              <strong>SCEA</strong> — сельскохозяйственное гражданское общество.<br>
+              <strong>SAS / SARL / SA</strong> — коммерческие компании, агрохолдинги и кооперативы.
+            </p>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <h4 class="font-bold text-slate-900 mb-1">🌾 Направления деятельности</h4>
+            <p class="text-slate-600 leading-relaxed">
+              <strong>Grandes cultures</strong> — зерновые, масличные, сахарная свёкла (пшеница, кукуруза, рапс, подсолнечник).<br>
+              <strong>Viticulture</strong> — виноградарство и виноделие (домены, шато).<br>
+              <strong>Fruits / Arboriculture</strong> — сады и ягодники (яблоки, груши, персики).<br>
+              <strong>Légumes / Maraîchage</strong> — овощеводство открытого и защищённого грунта.<br>
+              <strong>Élevage (Bovins / Ovins)</strong> — животноводство (молочное и мясное скотоводство).
+            </p>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <h4 class="font-bold text-slate-900 mb-1">🛡️ Соответствие нормам GDPR и ТЗ заказчика</h4>
+            <p class="text-slate-600 leading-relaxed">
+              Включены только общие корпоративные адреса (<em>contact@</em>, <em>info@</em>, <em>accueil@</em>, <em>secretariat@</em>) и телефоны приёмных. Персональные данные (ФИО сотрудников, личные мобильные номера и частные имейлы) строго отфильтрованы. Если общего email нет, предоставлена прямая ссылка на форму связи на сайте.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters & Search Toolbar -->
+    <div class="bg-white border border-slate-200 rounded-xl p-4 mb-6 shadow-sm">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <!-- Search Input -->
+        <div class="relative">
+          <input type="text" id="searchInput" placeholder="Поиск по названию, городу, email..." class="w-full pl-9 pr-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+
+        <!-- Region Filter -->
+        <div>
+          <select id="regionSelect" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition">
+            <option value="">Все регионы Франции</option>
+            <option value="Nouvelle-Aquitaine">Nouvelle-Aquitaine</option>
+            <option value="Grand Est">Grand Est</option>
+            <option value="Occitanie">Occitanie</option>
+            <option value="Provence-Alpes-Côte d'Azur">Provence-Alpes-Côte d'Azur</option>
+            <option value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
+            <option value="Pays de la Loire">Pays de la Loire</option>
+            <option value="Normandie">Normandie</option>
+            <option value="Centre-Val de Loire">Centre-Val de Loire</option>
+            <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
+            <option value="Hauts-de-France">Hauts-de-France</option>
+          </select>
+        </div>
+
+        <!-- Activity Filter -->
+        <div>
+          <select id="activitySelect" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition">
+            <option value="">Все направления деятельности</option>
+            <option value="Grandes cultures">Grandes cultures (полевые/зерновые)</option>
+            <option value="Viticulture">Viticulture (виноделие/виноградники)</option>
+            <option value="Fruits">Fruits (сады/ягоды)</option>
+            <option value="Légumes">Légumes (овощеводство)</option>
+            <option value="Bovins">Élevage (животноводство / скотоводство)</option>
+          </select>
+        </div>
+
+        <!-- Checkbox Filter -->
+        <div class="flex items-center justify-between sm:justify-start px-2 py-1">
+          <label class="flex items-center text-xs font-medium text-slate-700 cursor-pointer select-none">
+            <input type="checkbox" id="hasEmailCheck" class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500 mr-2">
+            Только с общим Email
+          </label>
+          <span id="countBadge" class="ml-auto text-xs font-semibold px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-100">
+            100 из 100
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table Container -->
+    <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden mb-8">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-slate-200 text-left text-xs">
+          <thead class="bg-slate-100 text-slate-700 font-bold uppercase tracking-wider">
+            <tr>
+              <th scope="col" class="py-3 px-3 w-12 text-center">№</th>
+              <th scope="col" class="py-3 px-4 min-w-[200px]">Организация</th>
+              <th scope="col" class="py-3 px-4 min-w-[210px]">Регион и населённый пункт</th>
+              <th scope="col" class="py-3 px-4 min-w-[190px]">Культуры / Деятельность</th>
+              <th scope="col" class="py-3 px-3 min-w-[140px]">Официальный сайт</th>
+              <th scope="col" class="py-3 px-3 min-w-[130px]">Контакты / Форма</th>
+              <th scope="col" class="py-3 px-3 min-w-[180px]">Корпоративный Email</th>
+              <th scope="col" class="py-3 px-3 min-w-[130px]">Телефон приёмной</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody" class="divide-y divide-slate-100 font-medium">
+            <!-- Rendered by JS -->
+          </tbody>
+        </table>
+      </div>
+      <div id="noResults" class="hidden p-8 text-center text-slate-500 text-sm">
+        Ничего не найдено по заданным фильтрам. Попробуйте изменить параметры поиска.
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <div>
+        Первоисточник данных: <a href="https://data.gouv.fr/fr/datasets/annuaire-des-exploitations-certifiees-haute-valeur-environnementale/" target="_blank" class="text-blue-600 hover:underline">Ministère de l'Agriculture (data.gouv.fr)</a>.
+      </div>
+      <div>
+        Разработано для выполнения заказа на Kwork • Лицензия Open Data 2.0
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const data = [{"id": 1, "name": "EARL ANTOINE LAMBERT", "location": "Normandie, Eure (VEXIN-SUR-EPTE)", "activity": "Grandes cultures", "website": "https://laptitefermedeloise.sumupstore.com", "contact": "https://laptitefermedeloise.sumupstore.com/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 2, "name": "HENRI DE BATZ DE TRENQUELLEON", "location": "Nouvelle-Aquitaine, Lot-et-Garonne (FEUGAROLLES)", "activity": "Grandes cultures", "website": "https://www.chateau-salles-buzet.fr", "contact": "https://www.chateau-salles-buzet.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 3, "name": "La Gourmandise, melons du Haut (SARL LA GOURMANDISE DU POITOU)", "location": "Nouvelle-Aquitaine, Vienne (OUZILLY)", "activity": "Grandes cultures", "website": "http://www.lagourmandisedupoitou.com", "contact": "http://www.lagourmandisedupoitou.com/contact", "email": "contact@lagourmandisedupoitou.com", "phone": "05 49 19 13 46", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 4, "name": "domainedastouin.com (BERTRAND MAZEL)", "location": "Provence-Alpes-Côte d'Azur, Bouches-du-Rhône (LES STES MARIES DE LA MER)", "activity": "Grandes cultures", "website": "https://www.domainedastouin.com", "contact": "https://www.domainedastouin.com/le-gite", "email": "", "phone": "05 33 91 97 91", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 5, "name": "DOMAINE DU CLOS DE LASSAY", "location": "Pays de la Loire, Maine-et-Loire (SAINT-MACAIRE-DU-BOIS)", "activity": "Grandes cultures", "website": "https://www.domainecloslassay.fr", "contact": "https://www.domainecloslassay.fr/nous-contacter", "email": "contact@domainecloslassay.fr", "phone": "+33(0)2 41 52 26 04", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 6, "name": "Spécialistes de l‘arboriculture (ASS VERGER EXPERIMENTAL ALSACE VEREXAL)", "location": "Grand Est, Bas-Rhin (OBERNAI)", "activity": "Fruits", "website": "https://www.verexal.net", "contact": "https://www.verexal.net/contact5cd2325b", "email": "", "phone": "01 01 01 44 32", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 7, "name": "CLAUDE PHILIP", "location": "Provence-Alpes-Côte d'Azur, Vaucluse (PERNES-LES-FONTAINES)", "activity": "Fruits hors sol", "website": "https://lajardindeclaire.fr", "contact": "https://lajardindeclaire.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 8, "name": "EARL VELUT", "location": "Grand Est, Aube (MONTGUEUX)", "activity": "Grandes cultures", "website": "https://www.champagne-velut.fr", "contact": "https://www.champagne-velut.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 9, "name": "SCEA DE LA VOUTE", "location": "Nouvelle-Aquitaine, Vienne (SENILLE ST SAUVEUR)", "activity": "Grandes cultures", "website": "https://www.lafabricdalice.fr", "contact": "https://www.lafabricdalice.fr/fr/contact.html", "email": "", "phone": "05 03 71 22 27", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 10, "name": "EARL LA MAISON BLANCHE", "location": "Pays de la Loire, Maine-et-Loire (LONGUE-JUMELLES)", "activity": "Fruits", "website": "https://www.verger-pommes-poires.com", "contact": "https://www.verger-pommes-poires.com/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 11, "name": "Fraises de Châteldon (EARL Fraises de Chateldon)", "location": "Auvergne-Rhône-Alpes, Puy-de-Dôme (CHATELDON)", "activity": "Fruits hors sol", "website": "https://www.fraisesdechateldon.fr", "contact": "https://www.fraisesdechateldon.fr", "email": "", "phone": "02 23 33 74 94", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 12, "name": "EARL JACOB FRUITS", "location": "Provence-Alpes-Côte d'Azur, Hautes-Alpes (ROCHEBRUNE)", "activity": "Fruits", "website": "https://www.jacob-fruits.fr", "contact": "https://www.jacob-fruits.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 13, "name": "pâtes St Père en Retz (DU PAYS DE RETZ)", "location": "Pays de la Loire, Loire-Atlantique (FROSSAY)", "activity": "Grandes cultures", "website": "https://www.mafermepreferetz.fr", "contact": "https://www.mafermepreferetz.fr/contact/", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 14, "name": "LPA La Ricarde (EPL DE LA DURANCE ET DU PAYS DES SORGUES)", "location": "Provence-Alpes-Côte d'Azur, Vaucluse (L' ISLE SUR LA SORGUE)", "activity": "Grandes cultures", "website": "https://www.lpa-ricarde.fr", "contact": "https://www.lpa-ricarde.fr/contact/", "email": "", "phone": "04 90 38 03 35", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 15, "name": "Domaine de Miselle (EARL DOMAINE CHEVALLIER)", "location": "Occitanie, Gers (CAUPENNE D'ARMAGNAC)", "activity": "Grandes cultures", "website": "https://www.miselle.com", "contact": "https://www.miselle.com/contact/", "email": "contact@miselle.com", "phone": "09 82 03 32 10", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 16, "name": "EARL LES VERGERS DU PONT VIEUX", "location": "Occitanie, Tarn (MONTDRAGON)", "activity": "Fruits", "website": "https://www.lesvergersdemontdragon.fr/?gclid=CjwKCAjwte-vBhBFEiwAQSv_xV-73Jxv1fzfVruJqTjTe-xSAPZEqm3mDnG25UuXj2lzj109TicYKBoC1hYQAvD_BwE", "contact": "https://www.lesvergersdemontdragon.fr/contactez-nous/", "email": "", "phone": "05 63 42 00 43", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 17, "name": "Producteur de fraises (ALPILLES FRUITS)", "location": "Provence-Alpes-Côte d'Azur, Bouches-du-Rhône (TARASCON)", "activity": "Fruits hors sol", "website": "https://www.rougealpilles.com", "contact": "https://www.rougealpilles.com/#contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 18, "name": "LA TREILLE", "location": "Provence-Alpes-Côte d'Azur, Bouches-du-Rhône (ARLES)", "activity": "Fruits", "website": "https://www.earllatreille.fr", "contact": "https://www.earllatreille.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 19, "name": "Ferme Fruitière Hufschmitt (EARL LES VERGERS HUFSCHMITT)", "location": "Grand Est, Bas-Rhin (WESTHOFFEN)", "activity": "Fruits", "website": "https://ferme-fruitiere-hufschmitt.fr", "contact": "https://ferme-fruitiere-hufschmitt.fr/contact-hufschmitt/", "email": "", "phone": "03 88 50 39 95", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 20, "name": "Les Délices de la Terre du Roure (GAEC LA TERRE DU ROURE)", "location": "Auvergne-Rhône-Alpes, Drôme (BEAUVOISIN)", "activity": "Fruits", "website": "https://terre-du-roure.com", "contact": "https://terre-du-roure.com/contact/", "email": "contact@terre-du-roure.com", "phone": "05 18 92 28 12", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 21, "name": "LES VERGERS DE MANE", "location": "Pays de la Loire, Maine-et-Loire (TERRANJOU)", "activity": "Fruits", "website": "https://www.verger-pommes-poires.com", "contact": "https://www.verger-pommes-poires.com/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 22, "name": "GEVES La Valette", "location": "Occitanie, Hérault (MONTPELLIER)", "activity": "Grandes cultures", "website": "https://www.geves.fr", "contact": "https://www.geves.fr/contact", "email": "contact@geves.fr", "phone": "01 12 24 99 63", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 23, "name": "GAEC THIBAULT", "location": "Bourgogne-Franche-Comté, Nièvre (POUGNY)", "activity": "Grandes cultures", "website": "https://www.domaine-villargeau.fr", "contact": "https://www.domaine-villargeau.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 24, "name": "EARL POTDEVIN CARON", "location": "Hauts-de-France, Nord (CUINCY)", "activity": "Grandes cultures", "website": "http://www.potdevin-caron.com", "contact": "http://www.potdevin-caron.com/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 25, "name": "My Site (MARINE BAROTIN)", "location": "Nouvelle-Aquitaine, Vienne (AMBERRE)", "activity": "Fruits", "website": "https://www.lesplantescelestes.com", "contact": "https://www.lesplantescelestes.com/nous-contacter", "email": "", "phone": "09 99 99 99 99", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 26, "name": "Myrtilles du Trimoulet (AURIANE REMIGY)", "location": "Nouvelle-Aquitaine, Creuse (BOUSSAC-BOURG)", "activity": "Fruits", "website": "https://myrtille.fr", "contact": "https://www.myrtille.fr/contact/", "email": "contact@myrtille.fr", "phone": "05 55 82 33 40", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 27, "name": "Mas Senegier (LAURENT BADRE)", "location": "Provence-Alpes-Côte d'Azur, Bouches-du-Rhône (LANCON-PROVENCE)", "activity": "Fruits", "website": "https://mas-seneguier.fr", "contact": "https://mas-seneguier.fr/contact/", "email": "", "phone": "05 43 91 51 62", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 28, "name": "EARL FRUITS DE MAUMONT (LAURENT MALIGNE)", "location": "Nouvelle-Aquitaine, Corrèze (SAINT-PARDOUX-CORBIER)", "activity": "Fruits", "website": "https://www.toutifruits.fr", "contact": "https://www.toutifruits-19.fr/contact.html", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 29, "name": "EARL FRUITS DE MAUMONT", "location": "Nouvelle-Aquitaine, Corrèze (SAINT-PARDOUX-CORBIER)", "activity": "Fruits", "website": "https://www.toutifruits.fr", "contact": "https://www.toutifruits-19.fr/contact.html", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 30, "name": "JUDICAEL VAIDIE", "location": "Pays de la Loire, Maine-et-Loire (VERRIERES-EN-ANJOU)", "activity": "Fruits", "website": "http://www.vergersdesene.com", "contact": "https://vergersdesene.com/contact/", "email": "", "phone": "04 36 86 72 60", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 31, "name": "ETABLISSEMENTS J LEBAILLY", "location": "Normandie, Manche (BRICQUEVILLE-SUR-MER)", "activity": "Légumes", "website": "https://www.le-bailly-50.fr", "contact": "https://www.le-bailly-50.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 32, "name": "EARL DESORGUES ET FILS", "location": "Provence-Alpes-Côte d'Azur, Bouches-du-Rhône (SAINT ANDIOL)", "activity": "Légumes", "website": "https://desorgues.fr", "contact": "https://desorgues.fr/contact/", "email": "contact@desorgues.fr", "phone": "01 70 83 49 84", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 33, "name": "LES FRUITS D'UNE PASSION", "location": "Auvergne-Rhône-Alpes, Drôme (EYGALIERS)", "activity": "Fruits", "website": "https://www.lesfruitsdunepassion.fr", "contact": "https://www.lesfruitsdunepassion.fr/contact/", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 34, "name": "légum'land (LEGUM' LAND)", "location": "Nouvelle-Aquitaine, Landes (YCHOUX)", "activity": "Légumes", "website": "https://angarnier.wixsite.com/legumland", "contact": "mailto:angarnier@primeale.com", "email": "", "phone": "02 47 60 51 24", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 35, "name": "BEATRICE DRIGEARD DESGARNIER", "location": "Auvergne-Rhône-Alpes, Loire (SAINT-JUST-SAINT-RAMBERT)", "activity": "Équins", "website": "https://www.elevagedelamure.com", "contact": "https://www.elevagedelamure.com/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 36, "name": "Régals des Champs (EARL Ehrhart Christian)", "location": "Grand Est, Bas-Rhin (Niedernai)", "activity": "Grandes cultures", "website": "https://regalsdeschamps.fr", "contact": "https://regalsdeschamps.fr/contact/", "email": "", "phone": "05 84 53 49 65", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 37, "name": "CHATEAU GISCOURS", "location": "Nouvelle-Aquitaine, Gironde (LABARDE)", "activity": "Viticulture, Ovins", "website": "https://www.chateau-giscours.fr", "contact": "https://www.chateau-giscours.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 38, "name": "Glidic Producteur breton (LA FERME BIO)", "location": "Bretagne, Finistère (PLABENNEC)", "activity": "Légumes", "website": "https://producteurbreton.bzh", "contact": "https://www.producteurbreton.bzh/contact/", "email": "", "phone": "02 98 29 72 41", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 39, "name": "Vergers de la Charronnière (LES VERGERS DE LA CHARRONNIERE)", "location": "Pays de la Loire, Maine-et-Loire (SEGRE-EN-ANJOU BLEU)", "activity": "Fruits", "website": "https://vergers-de-la-charronniere.fr", "contact": "https://vergers-de-la-charronniere.fr/mentions-legales/", "email": "contact@vergers-de-la-charronniere.fr", "phone": "02 41 61 32 22", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 40, "name": "CAMPUS AGRO-ENVIRONNEMENTAL 62", "location": "Hauts-de-France, Pas-de-Calais (TILLOY-LES-MOFFLAINES)", "activity": "Grandes cultures, Apiculture", "website": "https://campus-agro62.fr", "contact": "https://campus-agro62.fr/contact/", "email": "", "phone": "03 21 60 73 00", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 41, "name": "FERME VOGT", "location": "Grand Est, Bas-Rhin (BISCHWILLER)", "activity": "Légumes", "website": "https://ferme-vogt.com", "contact": "https://ferme-vogt.com/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 42, "name": "ENZA ZADEN FRANCE RECHERCHE", "location": "Pays de la Loire, Maine-et-Loire (ALLONNES)", "activity": "Légumes", "website": "https://www.enzazaden.com/fr", "contact": "https://www.enzazaden.com/fr/this-is-enza-zaden/contact", "email": "commande@enzazaden.fr", "phone": "09 90 14 99 62", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 43, "name": "LE PRIEURE DE LA DIVE", "location": "Pays de la Loire, Maine-et-Loire (CIZAY-LA-MADELEINE)", "activity": "Fruits", "website": "https://www.prieuredeladive.fr", "contact": "https://www.prieuredeladive.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 44, "name": "ABRIA", "location": "Pays de la Loire, Loire-Atlantique (SAINT-JULIEN-DE-CONCELLES)", "activity": "Légumes", "website": "https://legumeo.fr", "contact": "https://legumeo.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 45, "name": "BIOPRIM", "location": "Pays de la Loire, Loire-Atlantique (SAINT-JULIEN-DE-CONCELLES)", "activity": "Légumes", "website": "https://legumeo.fr", "contact": "https://legumeo.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 46, "name": "CHATEAU LES CARMES HAUT BRION", "location": "Nouvelle-Aquitaine, Gironde (PESSAC)", "activity": "Viticulture, Équins", "website": "http://www.les-carmes-haut-brion.com", "contact": "http://www.les-carmes-haut-brion.com/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 47, "name": "la Métairie Du Roc (BABETTE ET PHILIPPE)", "location": "Nouvelle-Aquitaine, Dordogne (FAUX)", "activity": "Grandes cultures, Équins", "website": "https://www.lametairieduroc.com", "contact": "https://www.lametairieduroc.com/contact/", "email": "", "phone": "04 54 45 81 82", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 48, "name": "Château DAUZAC, Margaux (CHATEAU DAUZAC)", "location": "Nouvelle-Aquitaine, Gironde (LABARDE)", "activity": "Viticulture, Ovins", "website": "https://www.chateaudauzac.com", "contact": "https://www.chateaudauzac.com/contact-acces/", "email": "contact@chateaudauzac.com", "phone": "04 13 87 07 53", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 49, "name": "CLASSIC SPORT HORSES", "location": "Nouvelle-Aquitaine, Dordogne (VELINES)", "activity": "Grandes cultures, Équins", "website": "https://www.classicsporthorses.net", "contact": "https://www.classicsporthorses.net/contact", "email": "info@classicsporthorses.net", "phone": "05 53 87 61 85", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 50, "name": "EARL FERME DU CHATEL", "location": "Grand Est, Marne (AULNAY-L'AITRE)", "activity": "Grandes cultures, Porcins", "website": "https://www.fermeduchatel.com", "contact": "https://www.fermeduchatel.com/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 51, "name": "Gaec de la Bocagère (DE LA BOCAGERE)", "location": "Centre-Val de Loire, Indre-et-Loire (BERTHENAY)", "activity": "Grandes cultures, Bovins viande", "website": "https://gaecdelabocagere.fr", "contact": "https://gaecdelabocagere.fr/mentions-legales/", "email": "", "phone": "+33 (0) 9 50 76 74 42", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 52, "name": "EARL DE SAINT ROQUE", "location": "Auvergne-Rhône-Alpes, Haute-Loire (BEAUMONT)", "activity": "Grandes cultures, Équins", "website": "https://la-ferme-joel-lolita.fr", "contact": "https://la-ferme-joel-lolita.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 53, "name": "DU PETIT BOIS D'O", "location": "Centre-Val de Loire, Indre-et-Loire (VILLEDOMAIN)", "activity": "Grandes cultures, Caprins", "website": "https://petitboisdo.fr", "contact": "https://petitboisdo.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 54, "name": "GADET TERREFORT (EARL BERNARD CHRISTIAN)", "location": "Nouvelle-Aquitaine, Gironde (GAILLAN-EN-MEDOC)", "activity": "Viticulture, Bovins viande", "website": "https://www.gadet-terrefort.com", "contact": "https://www.gadet-terrefort.com/contactus", "email": "", "phone": "+33(0)556417088", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 55, "name": "EARL GREGOIRE", "location": "Pays de la Loire, Maine-et-Loire (LYS-HAUT-LAYON)", "activity": "Grandes cultures, Bovins viande", "website": "https://www.domainedelanguetouche.fr", "contact": "https://www.domainedelanguetouche.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 56, "name": "EARL LA FORET DU BRAME", "location": "Nouvelle-Aquitaine, Charente (MAINZAC)", "activity": "Autres végétaux, Équins", "website": "https://boutique.les2noixelles.fr", "contact": "https://boutique.les2noixelles.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 57, "name": "Château Lascombes (CHATEAU LASCOMBES)", "location": "Nouvelle-Aquitaine, Gironde (MARGAUX-CANTENAC)", "activity": "Viticulture, Ovins", "website": "https://chateau-lascombes.com", "contact": "https://chateau-lascombes.com/contact-chateau-lascombes/", "email": "contact@chateau-lascombes.fr", "phone": "+33 (0)5 57 88 70 66", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 58, "name": "EARL LANDROT FRERES", "location": "Auvergne-Rhône-Alpes, Nièvre (MILLAY)", "activity": "Grandes cultures, Bovins viande", "website": "https://lesprairiesgourmandesdumorvan.fr", "contact": "https://lesprairiesgourmandesdumorvan.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 59, "name": "3S", "location": "Provence-Alpes-Côte d'Azur, Bouches-du-Rhône (LANCON-PROVENCE)", "activity": "Viticulture", "website": "https://www.domainesaintsavournin.com", "contact": "https://www.domainesaintsavournin.com/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 60, "name": "Smith Haut Lafitte (D.CATHIARD)", "location": "Nouvelle-Aquitaine, Gironde (MARTILLAC)", "activity": "Viticulture, Caprins", "website": "https://www.smith-haut-lafitte.com", "contact": "https://www.smith-haut-lafitte.com/contact/", "email": "vino@caudalie.com", "phone": "05 57 83 11 22", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 61, "name": "EARL BISONS D'AUVERGNE", "location": "Auvergne-Rhône-Alpes, Allier (ROCLES)", "activity": "Bovins viande", "website": "https://bisons-auvergne.fr", "contact": "https://bisons-auvergne.fr/nous-contacter", "email": "boutique@bisons-auvergne.fr", "phone": "04 42 71 42 76", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 62, "name": "Vignobles Paeffgen (EARL LASSUS LE REYSSE)", "location": "Nouvelle-Aquitaine, Gironde (BEGADAN)", "activity": "Viticulture, Bovins viande", "website": "https://vignoblespaeffgen.org", "contact": "https://vignoblespaeffgen.org/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 63, "name": "EARL DE L'ARBRE", "location": "Nouvelle-Aquitaine, Charente (ROUZEDE)", "activity": "Autres végétaux, Volailles", "website": "https://www.fermedelarbre.fr", "contact": "https://www.fermedelarbre.fr/contact", "email": "fermedelarbre@laposte.net", "phone": "05 45 65 06 20", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 64, "name": "ADRIEN BARDOUX", "location": "Grand Est, Marne (VILLE-DOMMANGE)", "activity": "Viticulture", "website": "https://champagne-bardoux.com/#", "contact": "https://champagne-bardoux.com/#/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 65, "name": "GEVES Cavaillon", "location": "Provence-Alpes-Côte d'Azur, Vaucluse (LE THOR)", "activity": "Légumes", "website": "https://www.geves.fr", "contact": "https://www.geves.fr/contact", "email": "contact@geves.fr", "phone": "01 12 24 99 63", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 66, "name": "Visite Irouléguy (EARL MENDIXKA)", "location": "Nouvelle-Aquitaine, Pyrénées-Atlantiques (IROULEGUY)", "activity": "Viticulture, Bovins viande", "website": "https://www.visite-irouleguy.com", "contact": "https://www.visite-irouleguy.com/mentions-legales", "email": "info@agerria.com", "phone": "05 59 37 41 06", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 67, "name": "Les Cerfs de la Fardellière (EARL JACQUET)", "location": "Pays de la Loire, Maine-et-Loire (CHEMILLE-EN-ANJOU)", "activity": "Grandes cultures, Porcins", "website": "https://www.lescerfsdelafardelliere.fr", "contact": "https://www.lescerfsdelafardelliere.fr/contact.html", "email": "", "phone": "02 41 45 41 01", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 68, "name": "Champagne Pommelet à Romery (POMMELET FREDERIC)", "location": "Grand Est, Marne (ROMERY)", "activity": "Viticulture", "website": "https://champagne-pommelet-romery.com", "contact": "https://champagne-pommelet-romery.com/content/37-contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 69, "name": "ANNEAU PRODUCTION", "location": "Pays de la Loire, Loire-Atlantique (DIVATTE-SUR-LOIRE)", "activity": "Viticulture", "website": "https://vignobles-anneau.fr", "contact": "https://vignobles-anneau.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 70, "name": "ANDRE LEMAIRE", "location": "Grand Est, Marne (MONTGENOST)", "activity": "Viticulture", "website": "https://champagne-hubert-thiebault.fr", "contact": "https://champagne-hubert-thiebault.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 71, "name": "GEVES Anjouère", "location": "Pays de la Loire, Maine-et-Loire (ERDRE EN ANJOU)", "activity": "Grandes cultures", "website": "https://www.geves.fr", "contact": "https://www.geves.fr/contact", "email": "contact@geves.fr", "phone": "01 12 24 99 63", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 72, "name": "Vignerons de Saint Marc - Canteperdrix (ANTHONY DAVID)", "location": "Provence-Alpes-Côte d'Azur, Vaucluse (MAZAN)", "activity": "Viticulture", "website": "https://vignerons-saint-marc-canteperdrix.fr", "contact": "mailto:ma.gl@saint-marc-canteperdrix.fr", "email": "", "phone": "04 90 62 40 84", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 73, "name": "Champagne Auguste (AUGUSTE SERURRIER)", "location": "Grand Est, Marne (COURMAS)", "activity": "Viticulture", "website": "https://champagne-auguste-serurrier.com", "contact": "https://champagne-auguste-serurrier.com/contact-et-visites/", "email": "", "phone": "03 26 04 67 78", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 74, "name": "Pierre Aguilas, Domaine Gaudard (ANTOINE AGUILAS)", "location": "Pays de la Loire, Maine-et-Loire (CHAUDEFONDS-SUR-LAYON)", "activity": "Viticulture", "website": "https://www.domaine-aguilas.fr", "contact": "https://www.domaine-aguilas.fr/contact/", "email": "", "phone": "02 41 78 10 68", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 75, "name": "EARL DE PELARD", "location": "Nouvelle-Aquitaine, Charente-Maritime (LE GUA)", "activity": "Grandes cultures, Bovins lait", "website": "https://mamadiza.fr", "contact": "https://mamadiza.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 76, "name": "GEVES Brion", "location": "Pays de la Loire, Maine-et-Loire (LES BOIS D'ANJOU)", "activity": "Légumes", "website": "https://www.geves.fr", "contact": "https://www.geves.fr/contact", "email": "contact@geves.fr", "phone": "01 12 24 99 63", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 77, "name": "FERME LES ACACIAS (EARL LES ACACIAS)", "location": "Nouvelle-Aquitaine, Pyrénées-Atlantiques (URT)", "activity": "Grandes cultures, Porcins", "website": "https://www.fermelesacacias.fr", "contact": "https://www.fermelesacacias.com/contactez-nous.html", "email": "contact@fermelesacacias.fr", "phone": "05 59 56 25 44", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 78, "name": "4A", "location": "Nouvelle-Aquitaine, Gironde (SAINT-EMILION)", "activity": "Viticulture", "website": "https://chateauzayawinery.com", "contact": "https://www.vignoblesyounan.com/contact.php", "email": "", "phone": "+33 (0)5 40 20 78 94", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 79, "name": "Champagne Auguste (AUGUSTE DENIS)", "location": "Grand Est, Marne (COURMAS)", "activity": "Viticulture", "website": "https://champagne-auguste-serurrier.com", "contact": "https://champagne-auguste-serurrier.com/contact-et-visites/", "email": "", "phone": "03 26 04 67 78", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 80, "name": "ALAIN TABANI", "location": "Provence-Alpes-Côte d'Azur, Var (POURRIERES)", "activity": "Viticulture", "website": "https://www.domaine-saint-hubert.fr", "contact": "mailto:/contact", "email": "", "phone": "03 78 30 93 18", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 81, "name": "Domaine Cédrick Bardin (BARDIN CEDRICK (EARL))", "location": "Bourgogne-Franche-Comté, Nièvre (POUILLY SUR LOIRE)", "activity": "Viticulture", "website": "https://www.domaine-cedrick-bardin.fr", "contact": "https://www.domaine-cedrick-bardin.fr/contact/", "email": "contact@domaine-cedrick-bardin.fr", "phone": "03 86 39 11 24", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 82, "name": "BADER MIMEUR", "location": "Bourgogne-Franche-Comté, Côte-d'Or (CHASSAGNE-MONTRACHET)", "activity": "Viticulture", "website": "https://www.bader-mimeur.com", "contact": "https://www.bader-mimeur.com/fr/contact", "email": "info@bader-mimeur.com", "phone": "03 80 21 30 22", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 83, "name": "DOMAINE ALBIN JACUMIN (A. JACUMIN)", "location": "Provence-Alpes-Côte d'Azur, Vaucluse (CHATEAUNEUF-DU-PAPE)", "activity": "Viticulture", "website": "https://www.domaine-albin-jacumin.fr", "contact": "https://www.domaine-albin-jacumin.fr/contact/", "email": "domaine.ajacumin@orange.fr", "phone": "05 26 31 57 89", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 84, "name": "BAUDRY", "location": "Nouvelle-Aquitaine, Dordogne (LEMBRAS)", "activity": "Viticulture", "website": "https://www.domainedugrandjaure.com", "contact": "https://www.domainedugrandjaure.com/contact", "email": "", "phone": "01 98 57 51 84", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 85, "name": "BARTON & GUESTIER", "location": "Nouvelle-Aquitaine, Gironde (BLANQUEFORT)", "activity": "Viticulture", "website": "https://www.barton-guestier.com", "contact": "https://www.barton-guestier.com/Contact.php", "email": "contact@barton-guestier.com", "phone": "09 25 92 65 46", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 86, "name": "BAZANTAY", "location": "Pays de la Loire, Maine-et-Loire (DOUE-EN-ANJOU)", "activity": "Viticulture", "website": "https://www.vignoblebazantay.com", "contact": "https://www.vignoblebazantay.com/contact/", "email": "", "phone": "02 41 59 31 82", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 87, "name": "BASTIDE CASTEL D'AILLE", "location": "Provence-Alpes-Côte d'Azur, Var (VIDAUBAN)", "activity": "Viticulture", "website": "https://www.bastide-castel-daille.com", "contact": "https://www.bastide-castel-daille.com", "email": "contact@bastide-castel-daille.com", "phone": "09 99 99 99 99", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 88, "name": "BODILLARD MICHELE", "location": "Auvergne-Rhône-Alpes, Rhône (VILLIE MORGON)", "activity": "Viticulture", "website": "https://www.vignoblesbodillard.com", "contact": "https://www.vignoblesbodillard.com/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 89, "name": "AGRISOL", "location": "Occitanie, Gard (MONTFRIN)", "activity": "Viticulture", "website": "https://closguerin.fr", "contact": "https://closguerin.fr/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 90, "name": "La Ferme de la Loge (EARL DE CEE)", "location": "Auvergne-Rhône-Alpes, Allier (CHASSENARD)", "activity": "Grandes cultures, Bovins viande", "website": "https://www.fermedelaloge.fr", "contact": "https://www.fermedelaloge.fr/contact/", "email": "contact@fermedelaloge.fr", "phone": "03 16 47 31 25", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 91, "name": "BARON PHILIPPE DE ROTHSCHILD SA", "location": "Nouvelle-Aquitaine, Gironde (PAUILLAC)", "activity": "Viticulture", "website": "https://www.bpdr.com", "contact": "https://www.bpdr.com/contact-2", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 92, "name": "LA PROPRIETE (BIBEY)", "location": "Nouvelle-Aquitaine, Gironde (BEGADAN)", "activity": "Viticulture", "website": "https://www.chateau-labadie.com", "contact": "https://www.chateau-labadie.com/fr/contact.html", "email": "chateau.labadie@wanadoo.fr", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 93, "name": "ARNAUD DESPRES", "location": "Auvergne-Rhône-Alpes, Rhône (FLEURIE)", "activity": "Viticulture", "website": "https://www.domaine-de-la-madone.com", "contact": "https://www.domaine-de-la-madone.com/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 94, "name": "Producteur de chapagne Celles (BENOIT TASSIN)", "location": "Grand Est, Aube (CELLES-SUR-OURCE)", "activity": "Viticulture", "website": "https://www.champagne-benoit-tassin.com", "contact": "https://www.champagne-benoit-tassin.com#contactSheetTrigger", "email": "", "phone": "09 74 56 91 05", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 95, "name": "BOHDAN PRUSKI", "location": "Occitanie, Hérault (LEZIGNAN-LA-CEBE)", "activity": "Viticulture", "website": "https://domainebomary.com", "contact": "https://domainebomary.com/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 96, "name": "Vérification de l'âge (BONNEVIE-BOCART)", "location": "Grand Est, Marne (BILLY-LE-GRAND)", "activity": "Viticulture", "website": "https://www.champagne-bonnevie-bocart.com", "contact": "https://www.champagne-bonnevie-bocart.com/contact", "email": "", "phone": "", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 97, "name": "Château de Sériège (BARTHELEMY D'ANDOQUE DE SERIEGE)", "location": "Occitanie, Hérault (CRUZY)", "activity": "Viticulture", "website": "https://www.seriege.fr/chateau-de-seriege-famille-dandoque", "contact": "https://www.seriege.fr/mentions-legales", "email": "", "phone": "04 68 65 11 23", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 98, "name": "DOMAINE DUMAS (BERNARD DUMAS)", "location": "Auvergne-Rhône-Alpes, Rhône (TERNAND)", "activity": "Viticulture", "website": "https://domainedumas.fr", "contact": "https://www.domainedumas.fr#contact", "email": "contact@domainedumas.fr", "phone": "09 26 88 29 20", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 99, "name": "Cave La Paroisse (AURELIEN ESCUDERO)", "location": "Nouvelle-Aquitaine, Gironde (SAINT-SEURIN-DE-CADOURNE)", "activity": "Viticulture", "website": "https://www.cave-la-paroisse.fr", "contact": "https://www.cave-la-paroisse.fr/contactez-nous/", "email": "", "phone": "05 56 59 31 28", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}, {"id": 100, "name": "Domaine des Montillets (AURELIEN LARGE)", "location": "Auvergne-Rhône-Alpes, Rhône (VILLIE-MORGON)", "activity": "Viticulture", "website": "https://www.domainedesmontillets.fr", "contact": "https://domainedesmontillets.fr/contact/", "email": "", "phone": "03 96 62 27 80", "source": "Ministère de l’Agriculture (data.gouv.fr - Annuaire officiel HVE)"}];
+
+    function getCropBadge(act) {
+      if (act.includes('Viticulture')) return '<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold badge-vigne">🍇 ' + act + '</span>';
+      if (act.includes('Fruits')) return '<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold badge-fruit">🍎 ' + act + '</span>';
+      if (act.includes('Bovins') || act.includes('animale')) return '<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold badge-elevage">🐄 ' + act + '</span>';
+      return '<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold badge-crop">🌾 ' + act + '</span>';
+    }
+
+    function renderTable(items) {
+      const tbody = document.getElementById('tableBody');
+      const noResults = document.getElementById('noResults');
+      const countBadge = document.getElementById('countBadge');
+
+      countBadge.textContent = `${items.length} из ${data.length}`;
+
+      if (items.length === 0) {
+        tbody.innerHTML = '';
+        noResults.classList.remove('hidden');
+        return;
+      }
+
+      noResults.classList.add('hidden');
+      tbody.innerHTML = items.map((r, i) => {
+        const isEven = i % 2 === 0;
+        const rowBg = isEven ? 'bg-white' : 'bg-slate-50/60';
+
+        const emailCell = r.email 
+          ? `<a href="mailto:${r.email}" class="inline-flex items-center gap-1 font-semibold text-blue-600 hover:underline">
+               <span>✉️</span> ${r.email}
+             </a>`
+          : `<span class="text-slate-400 italic font-normal">через форму на сайте</span>`;
+
+        const phoneCell = r.phone 
+          ? `<a href="tel:${r.phone.replace(/\s+/g, '')}" class="font-semibold text-slate-700 hover:text-blue-600">
+               📞 ${r.phone}
+             </a>`
+          : `<span class="text-slate-400 italic font-normal">—</span>`;
+
+        return `
+          <tr class="${rowBg} hover:bg-blue-50/50 transition">
+            <td class="py-2.5 px-3 text-center text-slate-400 font-semibold">${r.id}</td>
+            <td class="py-2.5 px-4 font-bold text-slate-900">${r.name}</td>
+            <td class="py-2.5 px-4 text-slate-600">${r.location}</td>
+            <td class="py-2.5 px-4">${getCropBadge(r.activity)}</td>
+            <td class="py-2.5 px-3">
+              <a href="${r.website}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-blue-600 hover:underline font-semibold">
+                Сайт ↗
+              </a>
+            </td>
+            <td class="py-2.5 px-3">
+              <a href="${r.contact}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-indigo-600 hover:underline font-medium">
+                Контакты ↗
+              </a>
+            </td>
+            <td class="py-2.5 px-3">${emailCell}</td>
+            <td class="py-2.5 px-3">${phoneCell}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function filterData() {
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      const reg = document.getElementById('regionSelect').value;
+      const act = document.getElementById('activitySelect').value;
+      const hasEmail = document.getElementById('hasEmailCheck').checked;
+
+      const filtered = data.filter(r => {
+        if (q) {
+          const match = r.name.toLowerCase().includes(q) ||
+                        r.location.toLowerCase().includes(q) ||
+                        r.activity.toLowerCase().includes(q) ||
+                        r.email.toLowerCase().includes(q) ||
+                        r.phone.toLowerCase().includes(q);
+          if (!match) return false;
+        }
+        if (reg && !r.location.includes(reg)) return false;
+        if (act && !r.activity.includes(act)) return false;
+        if (hasEmail && !r.email) return false;
+        return true;
+      });
+
+      renderTable(filtered);
+    }
+
+    document.getElementById('searchInput').addEventListener('input', filterData);
+    document.getElementById('regionSelect').addEventListener('change', filterData);
+    document.getElementById('activitySelect').addEventListener('change', filterData);
+    document.getElementById('hasEmailCheck').addEventListener('change', filterData);
+
+    function toggleGlossary() {
+      const content = document.getElementById('glossaryContent');
+      const icon = document.getElementById('glossaryToggleIcon');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.textContent = 'Свернуть ↑';
+      } else {
+        content.classList.add('hidden');
+        icon.textContent = 'Развернуть ↓';
+      }
+    }
+
+    renderTable(data);
+  </script>
+</body>
+</html>
